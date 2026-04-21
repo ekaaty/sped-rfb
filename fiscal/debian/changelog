@@ -1,3 +1,15 @@
+sped-fiscal (6.0.3) stable; urgency=medium
+
+  * Version 6.0.3
+
+ -- Christian Tosta <packaging@infra7.internal>  Tue, 21 Apr 2026 10:32:43 -0300
+
+sped-fiscal (6.0.2) stable; urgency=medium
+
+  * Version 6.0.2
+
+ -- Christian Tosta <packaging@infra7.internal>  Thu, 15 Jan 2026 10:53:52 -0300
+
 sped-fiscal (5.0.2) stable; urgency=low
 
   * Version 5.0.2
