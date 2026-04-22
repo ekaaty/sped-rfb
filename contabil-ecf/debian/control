@@ -14,8 +14,6 @@ Depends: ${misc:Depends},
          python3-distro,
          desktop-file-utils,
          libc6:i386,
-         lib32gcc1,
-         libcrypt1:i386,
          debconf (>= 0.5.00)
 Suggests: openjdk-8-jre-headless
 Priority: optional

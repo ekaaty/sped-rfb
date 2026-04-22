@@ -1,3 +1,9 @@
+sped-irpj (12.0.3) stable; urgency=low
+
+  * Version 12.0.3
+
+ -- Christian Tosta <packaging@infra7.internal>  Tue, 21 Apr 2026 17:14:46 -0300
+
 sped-irpj (10.0.13) stable; urgency=low
 
   * Version 10.0.13

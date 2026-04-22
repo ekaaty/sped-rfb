@@ -3,5 +3,5 @@
 url="https://servicos.receita.fazenda.gov.br/publico/programas/Sped/ECF"
 version=$(head -1 debian/changelog | awk -F"[()]" '{print $2}')
 
-rm -f sources/PSpedEcf_linux_x64-*
-git annex addurl --file sources/SpedEcf_linux_x64-${version}.jar $url/SpedEcf_linux_x64-${version}.jar
+rm -f sources/SpedECF_linux_x86_64-*
+git annex addurl --file sources/SpedECF_linux_x86_64-${version}.sh $url/SpedECF_linux_x86_64-${version}.sh
