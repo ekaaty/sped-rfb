@@ -8,11 +8,12 @@
 %global pkg_release	1
 
 %global appname         __APPNAME__
+%global appcaller       SpedContabil
 
 Name:           	%{pkg_name}
 Version:        	%{pkg_version}
 Release:        	%{pkg_release}%{?dist}
-Summary:        	Brazilian Digital Accouting Bookkeeping (ECD) Validator
+Summary:        	razilian Digital Accouting Bookkeeping (ECD) Validator.
 
 License:        	GPL-2+
 URL:            	http://sped.rfb.gov.br/
@@ -21,25 +22,28 @@ Source0:  		%{pkg_name}_%{pkg_version}.tar.xz
 Source1:		Makefile
 
 AutoReq:		no
-BuildArch:		x86_64
+BuildArch:		__BUILDARCH__
 BuildConflicts: 	%{name}
 BuildRequires:		debhelper > 10
 BuildRequires:		devscripts
 BuildRequires:		git-annex
+BuildRequires:		jq
 
 Conflicts:		mariadb-server
-Provides:		SPED(ECD) = %{version}
-Provides:		SPED(Contabil) = %{version}
+Provides:               sped-contabil-ecd = %{version}
+Provides:               SPED(ECD) = %{version}
+Provides:               SPED(Contabil) = %{version}
+Provides:               SPED(Contabil-ECD) = %{version}
 Requires:		desktop-file-utils
 Requires:		libnsl(x86-32) 
 Requires:		libxcrypt-compat(x86-32)
+Requires:		ms-core-arial-fonts
 Requires:		python3-distro
 
 %description
 This package provides the SPED validator for Digital
 Accounting Bookkeeping (ECD) and is part of the Brazilian
 Public Digital Bookkeeping System (SPED).
-
 
 %prep
 rm -rf %{name}-%{version} || find %{name}-%{version}/ -exec chmod u+w {} \+ -delete
@@ -52,40 +56,34 @@ git init && git annex init
 make clean-all
 make prep
 
-# OVerride program caller
-%{__mv} -f debian/%{pkg_name}/opt/sped/contabil/SpedContabil sources/contabilpva
-
 
 %install
 %{__mkdir_p} %{buildroot}%{_bindir}/
 %{__mkdir_p} %{buildroot}%{_datadir}/applications/
 %{__mkdir_p} %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/
+%{__mkdir_p} %{buildroot}%{_datadir}/fonts/%{appname}/
 %{__mkdir_p} %{buildroot}%{_docdir}/%{name}/
-#{__mkdir_p} %{buildroot}%{_sysconfdir}/default/
 %{__mkdir_p} %{buildroot}/opt/
 
 cp -a debian/%{pkg_name}/opt %{buildroot}/
 %{__install} -D debian/copyright %{buildroot}%{_docdir}/%{name}/license.txt
-%{__install} -D sources/contabilpva %{buildroot}/usr/bin/
-%{__install} -D sources/br.gov.serpro.sped.contabilpva.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/
-%{__install} -D sources/br.gov.serpro.sped.contabilpva.desktop %{buildroot}%{_datadir}/applications/
-#echo "#INTERNAL_JRE=false" > %{buildroot}%{_sysconfdir}/default/sped-%{appname}
+%{__install} -D sources/br.gov.serpro.sped.%{appname}pva.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/
+%{__install} -D sources/br.gov.serpro.sped.%{appname}pva.desktop %{buildroot}%{_datadir}/applications/
+%{__ln} -snf ../../opt/sped/%{appname}/%{appcaller} %{buildroot}/%{_bindir}/%{appname}pva
 
 %{__rm} -rf \
-  %{buildroot}/opt/sped/%{appname}/SpedContabil.exe \
+  %{buildroot}/opt/sped/%{appname}/%{appcaller}.exe \
   %{buildroot}/opt/sped/%{appname}/*.desktop \
+  %{buildroot}/opt/sped/%{appname}/after_install.sh \
   %{buildroot}/opt/sped/%{appname}/uninstall
-  #{buildroot}/opt/sped/%{appname}/.install4j \
 
 
 %files
-%{_bindir}/contabilpva
-%{_datadir}/applications/br.gov.serpro.sped.contabilpva.desktop
-%{_datadir}/icons/hicolor/128x128/apps/br.gov.serpro.sped.contabilpva.png
+%{_bindir}/%{appname}pva
+%{_datadir}/applications/br.gov.serpro.sped.%{appname}pva.desktop
+%{_datadir}/icons/hicolor/128x128/apps/br.gov.serpro.sped.%{appname}pva.png
 %{_docdir}/%{name}/license.txt
-#{_sysconfdir}/default/sped-#{appname}
 /opt/sped/%{appname}/
-
 
 %post
 if [ $1 == 1 ]; then
@@ -93,8 +91,8 @@ if [ $1 == 1 ]; then
     groupadd --system --force sped >/dev/null 2>&1 || :
   fi
 
-  chown -R root:sped /opt/sped/contabil
-  chmod -R g+rwx /opt/sped/contabil
+  chown -R root:sped /opt/sped/%{appname}
+  chmod -R g+rwx /opt/sped/%{appname}
 
   update-desktop-database || :
 fi
@@ -102,7 +100,7 @@ fi
 
 %postun
 if [ $1 == 0 ]; then
-  rm -rf /opt/sped/contabil > /dev/null 2>&1
+  rm -rf /opt/sped/%{appname} > /dev/null 2>&1
 fi
 
 
