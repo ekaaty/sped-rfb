@@ -30,8 +30,6 @@ BuildRequires:		git-annex
 BuildRequires:		jq
 
 Conflicts:		mariadb-server
-Obsoletes:		sped-irpj < %{version}
-Provides:		sped-irpj = %{version}
 Provides:               sped-contabil-ecf = %{version}
 Provides:               SPED(IRPJ) = %{version}
 Provides:               SPED(ECF) = %{version}

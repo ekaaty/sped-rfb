@@ -1,7 +1,6 @@
-sped-ecf (12.1.7) stable; urgency=low
+sped-irpj (12.1.7) stable; urgency=low
 
   * Version 12.1.7
-  * Package renamed to sped-ecf
 
  -- Christian Tosta <packaging@ekaaty.com>  Tue, 14 Jul 2026 00:56:39 -0300
 

@@ -1,11 +1,11 @@
-Source: sped-ecf
+Source: sped-irpj
 Maintainer: Cpuhouse Packaging System <packaging@cpuhouse.com.br>
 Section: libs
 Priority: optional
 Build-Depends: debhelper (>=10), git-annex, openjdk-8-jre-headless
 Standards-Version: 4.0.0
 
-package: sped-ecf
+package: sped-irpj
 Section: database
 Architecture: any
 Provides: sped-irpj, sped-contabil-ecf
