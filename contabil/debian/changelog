@@ -1,8 +1,14 @@
+sped-contabil (10.4.1) stable; urgency=low
+
+  * version 10.4.1
+
+ -- Christian Tosta <packaging@ekaaty.com>  Tue, 14 Jul 2026 00:44:45 -0300
+
 sped-contabil (10.3.5) stable; urgency=low
 
   * version 10.3.5
 
- -- Christian Tosta <packaging@infra7.internal>  Tue, 21 Apr 2026 17:12:49 -0300
+ -- Christian Tosta <packaging@ekaaty.com>  Tue, 21 Apr 2026 17:12:49 -0300
 
 sped-contabil (10.2.2) stable; urgency=low
 
