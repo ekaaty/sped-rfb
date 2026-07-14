@@ -1,14 +1,20 @@
+sped-fiscal (6.1.0) stable; urgency=medium
+
+  * Version 6.1.0
+
+ -- Christian Tosta <packaging@ekaaty.com>  Mon, 13 Jul 2026 23:47:58 -0300
+
 sped-fiscal (6.0.3) stable; urgency=medium
 
   * Version 6.0.3
 
- -- Christian Tosta <packaging@infra7.internal>  Tue, 21 Apr 2026 10:32:43 -0300
+ -- Christian Tosta <packaging@ekaaty.com>  Tue, 21 Apr 2026 10:32:43 -0300
 
 sped-fiscal (6.0.2) stable; urgency=medium
 
   * Version 6.0.2
 
- -- Christian Tosta <packaging@infra7.internal>  Thu, 15 Jan 2026 10:53:52 -0300
+ -- Christian Tosta <packaging@ekaaty.com>  Thu, 15 Jan 2026 10:53:52 -0300
 
 sped-fiscal (5.0.2) stable; urgency=low
 
